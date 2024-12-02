@@ -12,11 +12,11 @@ router.route("/").post(async (req, res) => {
   try {
     const { prompt } = req.body;
     const resp = await fetch(
-      "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3-medium-diffusers",
+      process.env.STABILITY_BASE_URL,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.STABILITY_AI_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
